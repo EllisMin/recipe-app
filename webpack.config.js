@@ -1,6 +1,8 @@
 const path = require("path");
 // Takes src/index.html to dist
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const isDevelopment = process.env.NODE_ENV === "development";
 
 module.exports = {
   // Where it starts bundling
@@ -19,6 +21,12 @@ module.exports = {
       // npm run start to start the server with index.html in src folder
       filename: "index.html",
       template: "./src/index.html"
+    }),
+    new MiniCssExtractPlugin({
+      // filename: isDevelopment ? "[name].css" : "[name].[hash].css",
+      // chunkFilename: isDevelopment ? "[id].css" : "[id].[hash].css"
+      filename: "[name].css",
+      chunkFilename: "[id].css"
     })
   ],
   module: {
@@ -30,15 +38,48 @@ module.exports = {
           loader: "babel-loader"
         }
       },
+      // {
+      //   test: /\.s[ac]ss$/i,
+      //   use: [
+      //     // Creates `style` nodes from JS strings
+      //     "style-loader",
+      //     // Translates CSS into CommonJS
+      //     "css-loader",
+      //     // Compiles Sass to CSS
+      //     "sass-loader"
+      //   ]
+      // },
       {
-        test: /\.s[ac]ss$/i,
-        use: [
-          // Creates `style` nodes from JS strings
-          "style-loader",
-          // Translates CSS into CommonJS
+        test: /\.module\.s(a|c)ss$/,
+        loader: [
+          isDevelopment ? "style-loader" : MiniCssExtractPlugin.loader,
+          {
+            loader: "css-loader",
+            options: {
+              modules: true,
+              sourceMap: isDevelopment
+            }
+          },
+          {
+            loader: "sass-loader",
+            options: {
+              sourceMap: isDevelopment
+            }
+          }
+        ]
+      },
+      {
+        test: /\.s(a|c)ss$/,
+        exclude: /\.module.(s(a|c)ss)$/,
+        loader: [
+          isDevelopment ? "style-loader" : MiniCssExtractPlugin.loader,
           "css-loader",
-          // Compiles Sass to CSS
-          "sass-loader"
+          {
+            loader: "sass-loader",
+            options: {
+              sourceMap: isDevelopment
+            }
+          }
         ]
       }
     ]
