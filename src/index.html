@@ -4,11 +4,72 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Recipe App | Ellis Min</title>
+    <title>Recipe App | Search over 1,000,000 Recipes!</title>
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,700"
+      rel="stylesheet"
+    />
+    <!-- Local CSS -->
+    <!-- <link rel="stylesheet" href="./main.css" /> -->
+    <!-- Font awesome -->
+    <script
+      src="https://kit.fontawesome.com/939d583296.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./img/favicon.ico" />
   </head>
+
   <body>
-    <h1>title</h1>
+    <nav id="main-nav">
+      <div class="container">
+        <a href="./index.html">
+          <div class="logo">
+            <img src="./img/icon.png" alt="logoimg" />
+            <div class="logo-text">
+              Recip<span class="primary-color">es</span>
+            </div>
+          </div>
+        </a>
+
+        <form class="search">
+          <input
+            type="text"
+            class="search-field"
+            placeholder="Search over 1,000,000 recipes!"
+          />
+          <button class="btn btn-search">
+            <i class="fas fa-search fa-xs"></i>
+            <span>Search</span>
+          </button>
+        </form>
+
+        <div class="likes">
+          <div class="likes-field">
+            <i class="fas fa-heart fa-lg"></i>
+          </div>
+          <div class="likes-panel">
+            <ul class="likes-list">
+              <li>
+                <a href="#23456" class="likes-link">
+                  <figure class="likes-fig">
+                    <img src="./img/test-1.jpg" alt="test-1" />
+                  </figure>
+                  <div class="likes-data">
+                    <h4 class="likes-name">Pasta with Tomato ...</h4>
+                    <p class="likes-author">The Pioneer Woman</p>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
 
     <!-- <script src="./js/bundle.js"></script> -->
   </body>
 </html>
+
+<!-- <i class="fas fa-utensils"></i> -->

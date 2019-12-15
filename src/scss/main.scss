@@ -1,5 +1,214 @@
-$primary-color: rgba(0,0,0, 0.3);
+// Google Font: Lato
+@import url("https://fonts.googleapis.com/css?family=Lato|Staatliches&display=swap");
+
+$website-width: 1100px;
+$primary-color: #ef4c4c;
+$primary-color-light: #f5b2b2;
+$light-color: #f4f4f4;
+$med-color: #ccc;
+$dark-color: #333;
+$bg-img: url("../img/showcase.jpg");
+$overlay-darken: rgba(0, 0, 0, 0.15);
+$logo-size: 35px;
+$gradient: linear-gradient(
+  to right bottom,
+  $primary-color-light,
+  $primary-color
+);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
-    background: $primary-color;
+  font-family: "Lato", sans-serif;
+  line-height: 1.4;
+  background: white;
+}
+
+a {
+  color: $dark-color;
+  text-decoration: none;
+}
+// Util
+.container {
+  max-width: $website-width;
+  margin: auto;
+  padding: 0 2rem;
+  overflow: hidden;
+}
+
+.primary-color {
+  color: $primary-color;
+}
+
+.btn {
+  border: none;
+  border-radius: 10rem;
+  text-transform: uppercase;
+  background: $gradient;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s;
+  color: #fff;
+
+  i {
+    margin-right: 0.3rem;
+    // color: $primary-color;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+#main-nav {
+  background: $light-color;
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    gap: 1rem;
+    padding: 0.5rem;
+    align-items: center;
+  }
+
+  .logo {
+    display: flex;
+    font-family: "Staatliches", cursive;
+    font-size: 2rem;
+    justify-content: flex-start;
+    align-items: center;
+    img {
+      width: $logo-size;
+      height: $logo-size;
+      margin-right: 0.5rem;
+      transform: translateY(-1.5px);
+    }
+  }
+
+  .search {
+    background: #fff;
+    border-radius: 10rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 1rem;
+    transition: all 0.3s;
+    color: $dark-color;
+
+    &:focus-within {
+      transform: translateY(-2px);
+      box-shadow: 0 0.7rem 3rem rgba(101, 90, 86, 0.08);
+    }
+    &-field {
+      width: 250px;
+      border: none;
+      background: none;
+      font-size: 1rem;
+
+      &:focus {
+        outline: none;
+      }
+
+      &::placeholder {
+        color: #dad0cd;
+      }
+    }
+  }
+
+  .likes {
+    position: relative;
+    align-self: stretch;
+
+    &-field {
+      cursor: pointer;
+      padding: 0 3rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      transition: all 0.3s;
+      i {
+        color: $primary-color;
+      }
+      &:hover {
+        background: $med-color;
+      }
+    }
+
+    &-panel:hover,
+    &-field:hover + .likes-panel {
+      //   visibility: visible;
+      //   opacity: 1;
+    }
+
+    &-panel {
+      position: absolute;
+      right: 0;
+      top: 10rem;
+    //   z-index: -1;
+      padding: 2rem 0;
+      width: 34rem;
+      background: #fff;
+      box-shadow: 0 0.8rem 5rem 2rem rgba(101, 90, 86, 0.1);
+      //   visibility: hidden;
+      //   opacity: 0;
+      transition: all 0.5s 0.2s;
+    }
+  }
+  .likes {
+    //   padding: 3rem 0;
+    &-list {
+      list-style: none;
+    }
+
+    .likes-link {
+      &:link,
+      &:visited {
+        display: flex;
+        align-items: center;
+        padding: 1.5rem 3rem;
+        transition: all 0.3s;
+        border-right: 1px solid #fff;
+        text-decoration: none;
+      }
+      &:hover {
+        background: $med-color;
+        transform: translateY(-2px);
+      }
+      .active {
+        background: $med-color;
+      }
+    }
+
+    &-fig {
+      flex: 0 0 5.5rem;
+      border-radius: 50%;
+      overflow: hidden;
+      height: 5.5rem;
+      margin-right: 2rem;
+      position: relative;
+      backface-visibility: hidden;
+      &:before {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: $gradient;
+        opacity: 0.6;
+      }
+    }
+  }
 }

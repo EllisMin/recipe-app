@@ -1,4 +1,9 @@
 // Global App controller
+// Imports
 import '../scss/main.scss';
+import Search from './modules/Search';
 
-const y = 25;
+const search = new Search('pizza');
+
+console.log(search);
+search.getRes();
