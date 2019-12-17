@@ -1,10 +1,12 @@
 // Google Font: Lato
 @import url("https://fonts.googleapis.com/css?family=Lato|Staatliches&display=swap");
 
-$website-width: 1100px;
+$website-width: 1280px;
 $primary-color: #ef4c4c;
-$primary-color-light: #f5b2b2;
+$primary-color-dark: #e72b2b;
+$primary-color-light: #f3c1c1;
 $light-color: #f4f4f4;
+$lighter-color: #fcfcfc;
 $med-color: #ccc;
 $dark-color: #333;
 $bg-img: url("../img/showcase.jpg");
@@ -15,6 +17,8 @@ $gradient: linear-gradient(
   $primary-color-light,
   $primary-color
 );
+$gradient-transparency: linear-gradient(to right bottom, #f3c1c1cb, #ef4c4ccb);
+$max-height: 60rem;
 
 * {
   margin: 0;
@@ -38,6 +42,7 @@ a {
   margin: auto;
   padding: 0 2rem;
   overflow: hidden;
+  //   background: $dark-color;
 }
 
 .primary-color {
@@ -48,31 +53,69 @@ a {
   border: none;
   border-radius: 10rem;
   text-transform: uppercase;
-  background: $gradient;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   transition: all 0.2s;
-  color: #fff;
-
-  i {
-    margin-right: 0.3rem;
-    // color: $primary-color;
-  }
-
-  &:hover {
-    transform: scale(1.05);
-  }
+  text-decoration: none;
   &:focus {
     outline: none;
   }
+
+  &-search {
+    background: $gradient;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    &:hover {
+      transform: scale(1.05);
+    }
+    i {
+      margin-right: 0.3rem;
+      // color: $primary-color;
+    }
+  }
+  &-inline {
+    background: $light-color;
+    color: $primary-color;
+    padding: 0.7rem 1.2rem;
+    // font-size: 0.6rem;
+    &:hover {
+      background: $med-color;
+    }
+    margin: 1rem 0.3rem;
+  }
+
+  // Buttons in recipe with gradient
+  &-recipe {
+    margin-top: 1.5rem;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    background: $gradient-transparency;
+    color: #fff;
+    font-size: 0.8rem;
+    i {
+      padding: 0.5rem;
+    }
+  }
+}
+
+.active {
+  background: $light-color;
+}
+
+.title-2 {
+  color: $primary-color;
+  transform: skew(-10deg);
+  margin: 1rem 0;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 1rem;
 }
 
 #main-nav {
   background: $light-color;
-
   .container {
     display: grid;
     grid-template-columns: 1fr 3fr 1fr;
@@ -103,7 +146,6 @@ a {
     align-items: center;
     padding-left: 1rem;
     transition: all 0.3s;
-    color: $dark-color;
 
     &:focus-within {
       transform: translateY(-2px);
@@ -113,20 +155,22 @@ a {
       width: 250px;
       border: none;
       background: none;
-      font-size: 1rem;
-
+      font-size: 0.9rem;
+      color: $primary-color-dark;
+      font-family: "Staatliches", cursive;
+      letter-spacing: 2px;
       &:focus {
         outline: none;
       }
 
       &::placeholder {
         color: #dad0cd;
+        letter-spacing: 2px;
       }
     }
   }
 
   .likes {
-    position: relative;
     align-self: stretch;
 
     &-field {
@@ -145,70 +189,340 @@ a {
       }
     }
 
-    &-panel:hover,
-    &-field:hover + .likes-panel {
-      //   visibility: visible;
-      //   opacity: 1;
+    &:hover {
+      .likes-panel {
+        visibility: visible;
+        opacity: 1;
+      }
     }
 
     &-panel {
       position: absolute;
       right: 0;
-      top: 10rem;
-    //   z-index: -1;
-      padding: 2rem 0;
-      width: 34rem;
+      z-index: 10;
+      padding: 1rem 0;
+      width: 20rem;
       background: #fff;
       box-shadow: 0 0.8rem 5rem 2rem rgba(101, 90, 86, 0.1);
-      //   visibility: hidden;
-      //   opacity: 0;
+      visibility: hidden;
+      opacity: 0;
       transition: all 0.5s 0.2s;
     }
   }
-  .likes {
-    //   padding: 3rem 0;
-    &-list {
-      list-style: none;
+}
+
+// Item entry in likes-panel and result-panel
+.likes,
+.result {
+  //   padding: 3rem 0;
+  &-list {
+    list-style: none;
+  }
+
+  &-link {
+    &:link,
+    &:visited {
+      display: flex;
+      align-items: center;
+      padding: 0.5rem;
+      transition: all 0.3s;
+      border-right: 1px solid #fff;
+      text-decoration: none;
+    }
+    &:hover {
+      background: $light-color;
+      transform: translateY(-2px);
+    }
+  }
+
+  &-link:hover {
+    .result-fig:before {
+      opacity: 0;
+    }
+  }
+
+  &-fig {
+    flex: 0 0 4rem;
+    border-radius: 50%;
+    overflow: hidden;
+    height: 4rem;
+    margin-right: 1rem;
+    position: relative;
+    backface-visibility: hidden;
+
+    // Photo overlay
+    &:before {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: $gradient;
+      opacity: 0.2;
+      //   background: black;
+      //   opacity: 0.2;
     }
 
-    .likes-link {
-      &:link,
-      &:visited {
-        display: flex;
-        align-items: center;
-        padding: 1.5rem 3rem;
-        transition: all 0.3s;
-        border-right: 1px solid #fff;
-        text-decoration: none;
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.3s;
+    }
+  }
+  &-name {
+    font-size: 0.8rem;
+    color: $primary-color;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+  }
+
+  &-author {
+    font-size: 0.8rem;
+    color: $dark-color;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+}
+// Main section: grid
+#main-section {
+  .container {
+    display: grid;
+    grid-template-columns: 2fr 4fr 2fr;
+    min-height: calc(100vh - 60px);
+  }
+
+  .result-panel {
+    .result-list:first-child a {
+      margin-top: 1rem;
+    }
+    .result-page-btns {
+      display: flex;
+      justify-content: center;
+      .btn-prev span i {
+        margin-right: 0.3rem;
       }
+      .btn-next span i {
+        margin-left: 0.3rem;
+      }
+    }
+  }
+
+  // Recipe Panel
+  .recipe {
+    &-panel {
+      background: $light-color;
+      display: flex;
+      flex-direction: column;
+
       &:hover {
-        background: $med-color;
-        transform: translateY(-2px);
-      }
-      .active {
-        background: $med-color;
+        .recipe-info-servings .recipe-info-btns {
+          visibility: visible;
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
     }
 
     &-fig {
-      flex: 0 0 5.5rem;
-      border-radius: 50%;
-      overflow: hidden;
-      height: 5.5rem;
-      margin-right: 2rem;
+      // height: 30rem;
       position: relative;
-      backface-visibility: hidden;
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      // Gradient overlay
       &:before {
         content: "";
         display: block;
-        width: 100%;
-        height: 100%;
         position: absolute;
         top: 0;
         left: 0;
+        width: 100%;
+        height: 100%;
         background: $gradient;
-        opacity: 0.6;
+        opacity: 0.2;
       }
     }
+
+    &-title {
+      position: absolute;
+      left: 50%;
+      bottom: 5%;
+      transform: translate(-50%, 20%) skewY(-3deg);
+      color: #fff;
+      text-transform: uppercase;
+      text-align: center;
+      width: 70%;
+      font-size: 1rem;
+      line-height: 2;
+      span {
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+        padding: 1rem 1.5rem;
+        background: $gradient-transparency;
+        border-radius: 12px;
+        // opacity: 0.8;
+      }
+    }
+
+    &-details {
+      display: flex;
+      justify-content: space-between;
+      padding: 2rem 2rem;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+
+      i {
+        color: $primary-color;
+        margin-right: 0.3rem;
+        // padding: 0.2rem;
+      }
+
+      .recipe-info-servings {
+        display: flex;
+        align-items: center;
+
+        .recipe-info-text {
+          margin: 0 0.3rem;
+        }
+
+        .recipe-info-btns {
+          display: flex;
+          visibility: hidden;
+          opacity: 0;
+          transition: opacity 0.3s, transform 0.3s;
+          transform: translateY(5px);
+        }
+      }
+
+      button {
+        background: none;
+      }
+    }
+
+    // Recipe panel: Ingredients
+    &-ingredients {
+      padding: 3rem 1.5rem;
+      background: $lighter-color;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      &-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        .item-ingredient {
+          display: flex;
+          padding: 1rem;
+          justify-content: flex-start;
+          align-items: baseline;
+          i {
+            color: $primary-color;
+            margin-right: 0.4rem;
+          }
+          .ingredient-count {
+            margin-right: 0.3rem;
+          }
+        }
+      }
+
+      .btn-recipe {
+        align-self: center;
+      }
+    }
+
+    &-directions {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      padding: 2rem 1rem;
+
+      &-text {
+        font-size: 0.9rem;
+        padding: 1rem 2rem;
+      }
+      .recipe-by {
+        font-weight: bold;
+        font-style: italic;
+      }
+    }
+  }
+  .shopping {
+    &-panel {
+      display: flex;
+      flex-direction: column;
+      padding: 1rem 1rem;
+    }
+
+    &-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      color: $dark-color;
+      max-height: $max-height;
+      overflow: scroll;
+      &-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+        border-bottom: 1px dashed $light-color;
+        font-size: 0.7rem;
+        &-count {
+          display: flex;
+          justify-content: center;
+          cursor: pointer;
+          padding: 0.3rem;
+          margin-right: 1rem;
+          border-radius: 3px;
+          border: 1px $light-color solid;
+
+          input {
+            width: 3.5rem;
+            border: none;
+            &:focus {
+              outline: none;
+              // background: $light-color;
+            }
+          }
+        }
+
+        &-des {
+          text-align: start;
+          align-self: flex-start;
+        }
+
+        .btn-delete {
+          color: $primary-color;
+          visibility: hidden;
+          opacity: 0;
+          transform: translateX(5px);
+          transition: all 0.3s;
+        }
+
+        &:hover {
+          .btn-delete {
+            transform: translateX(0);
+            visibility: visible;
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+  .copyright {
+    font-size: 0.6rem;
+    margin-top: 2rem;
+    color: $dark-color;
+    align-self: flex-end;
+    margin-top: auto;
   }
 }
