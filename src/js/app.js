@@ -1,7 +1,7 @@
 // Global App controller
 import "../scss/main.scss";
 import Search from "./modules/Search";
-import { DOM } from "./views/dom-obj";
+import { DOM, renderLoader, clearLoader } from "./views/dom-obj";
 import * as searchView from "./views/search-view";
 
 // Global state of app
@@ -29,11 +29,14 @@ const controlSearch = async () => {
     // prepare UI for results
     searchView.clearPrevSearch();
     searchView.clearInput();
+    // render loader while fetching
+    renderLoader(DOM.resultPanel);    
 
     // search for recipe
     await state.search.getRes(); // Promise is returned
 
     // Render results on UI
+    clearLoader();
     searchView.renderResults(state.search.recipes);
   }
 };

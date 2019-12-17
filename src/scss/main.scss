@@ -76,6 +76,7 @@ a {
       // color: $primary-color;
     }
   }
+
   &-inline {
     background: $light-color;
     color: $primary-color;
@@ -119,8 +120,11 @@ a {
   background: $light-color;
   .container {
     display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 1rem;
+    // display: flex;
+    // justify-content: space-between;
+    // flex-wrap: wrap;
     padding: 0.5rem;
     align-items: center;
   }
@@ -153,7 +157,7 @@ a {
       box-shadow: 0 0.7rem 3rem rgba(101, 90, 86, 0.08);
     }
     &-field {
-      width: 250px;
+      min-width: 230px;
       border: none;
       background: none;
       font-size: 0.9rem;
@@ -300,6 +304,7 @@ a {
   .result-panel {
     display: flex;
     flex-direction: column;
+    align-items: center;
     .result-list {
       // Using scroll instead of pagination
       // max-height: $max-height;
@@ -534,5 +539,22 @@ a {
     color: $dark-color;
     align-self: flex-end;
     margin-top: auto;
+  }
+}
+.loader {
+  margin-top: 5rem;
+  
+  i {
+    color: $primary-color;
+    animation: spin 1.3s infinite linear;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
