@@ -1,14 +1,6 @@
 // Import
 import axios from "axios";
 
-// Global state of app
-//  - Search object
-//  - Current recipe object
-//  - Shopping list object
-//  - Liked recipes
-const state = {
-    
-};
 
 
 export default class Search {

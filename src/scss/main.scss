@@ -18,7 +18,7 @@ $gradient: linear-gradient(
   $primary-color
 );
 $gradient-transparency: linear-gradient(to right bottom, #f3c1c1cb, #ef4c4ccb);
-$max-height: 60rem;
+$max-height: 50rem;
 
 * {
   margin: 0;
@@ -58,6 +58,7 @@ a {
   align-items: center;
   transition: all 0.2s;
   text-decoration: none;
+
   &:focus {
     outline: none;
   }
@@ -297,10 +298,19 @@ a {
   }
 
   .result-panel {
-    .result-list:first-child a {
-      margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    .result-list {
+      // Using scroll instead of pagination
+      // max-height: $max-height;
+      // overflow: scroll;
+      &:first-child a {
+        margin-top: 1rem;
+      }
     }
+
     .result-page-btns {
+      margin-top: auto;
       display: flex;
       justify-content: center;
       .btn-prev span i {
@@ -374,7 +384,7 @@ a {
     &-details {
       display: flex;
       justify-content: space-between;
-      padding: 2rem 2rem;
+      padding: 1.4rem 2rem;
       text-transform: uppercase;
       font-size: 0.8rem;
 
@@ -408,7 +418,7 @@ a {
 
     // Recipe panel: Ingredients
     &-ingredients {
-      padding: 3rem 1.5rem;
+      padding: 2rem 1.5rem;
       background: $lighter-color;
       display: flex;
       flex-direction: column;
@@ -443,7 +453,7 @@ a {
       justify-content: center;
       align-items: center;
 
-      padding: 2rem 1rem;
+      padding: 1rem 1rem;
 
       &-text {
         font-size: 0.9rem;
