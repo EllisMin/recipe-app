@@ -4,7 +4,7 @@ const searchPerPage = 10;
 const renderRecipe = recipe => {
   const markup = `
   <li>
-    <a href="#${recipe.id}" class="result-link">
+    <a href="#${recipe.recipe_id}" class="result-link">
       <div class="result-fig">
         <img src="${recipe.image_url}" alt="${recipe.title}" />
       </div>
@@ -57,7 +57,7 @@ const createBtn = (page, type) => {
   } else {
     throw new Error("Type must be either prev or next");
   }
-//   return markup;
+  //   return markup;
 };
 
 const renderBtns = (page, numEntry, resPerPage) => {
@@ -80,13 +80,18 @@ export const getInput = () => DOM.searchInput.value;
 export const clearInput = () => {
   DOM.searchInput.value = "";
 };
+
 export const clearPrevSearch = () => {
   DOM.searchList.innerHTML = "";
   DOM.resultPageBtnsPrev.innerHTML = "";
   DOM.resultPageBtnsNext.innerHTML = "";
 };
 
-export const renderResults = (recipes, page = 1, resPerPage = searchPerPage) => {
+export const renderResults = (
+  recipes,
+  page = 1,
+  resPerPage = searchPerPage
+) => {
   // Render entries
   const start = (page - 1) * resPerPage;
   const end = page * resPerPage;
@@ -98,6 +103,19 @@ export const renderResults = (recipes, page = 1, resPerPage = searchPerPage) => 
   //   });
   // === recipes.forEach(renderRecipe);
 
+  //   console.log(recipes); ///
+
   // Render buttons for pagination
-    renderBtns(page, recipes.length, resPerPage);
+  renderBtns(page, recipes.length, resPerPage);
+};
+
+export const highlightSelected = id => {
+  // Remove selected
+  const arrRes = Array.from(document.querySelectorAll(".active"));
+  arrRes.forEach(e => {
+    e.classList.remove("active");
+  });
+
+  // Using css selecting
+  document.querySelector(`a[href="#${id}"]`).classList.add("active");
 };

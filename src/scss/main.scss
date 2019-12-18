@@ -10,7 +10,7 @@ $lighter-color: #fcfcfc;
 $med-color: #ccc;
 $dark-color: #333;
 $bg-img: url("../img/showcase.jpg");
-$overlay-darken: rgba(0, 0, 0, 0.15);
+$overlay-darken: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
 $logo-size: 35px;
 $gradient: linear-gradient(
   to right bottom,
@@ -81,7 +81,6 @@ a {
     background: $light-color;
     color: $primary-color;
     padding: 0.7rem 1.2rem;
-    // font-size: 0.6rem;
     &:hover {
       background: $med-color;
     }
@@ -348,15 +347,11 @@ a {
     }
 
     &-fig {
-      // height: 30rem;
       position: relative;
-      img {
-        display: block;
-        width: 100%;
-        height: auto;
-      }
+      overflow: hidden;
+
       // Gradient overlay
-      &:before {
+      &:after {
         content: "";
         display: block;
         position: absolute;
@@ -364,30 +359,48 @@ a {
         left: 0;
         width: 100%;
         height: 100%;
-        background: $gradient;
-        opacity: 0.2;
+        background: $overlay-darken;
+        opacity: 1;
+      }
+
+      .recipe-img {
+        width: 100%;
+        height: 320px;
+        background-repeat: no-repeat !important;
+        background-position: center center !important;
+        background-size: cover !important;
+        overflow: hidden;
+      }
+      &:hover {
+        .recipe-img {
+          transform: scale(1.1);
+          transition: transform 0.3s;
+        }
+        .recipe-title {
+          opacity: 0;
+          transition: opacity 0.3s;
+        }
+        &:after {
+          transition: opacity 0.2s;
+          opacity: 0.2;
+        }
       }
     }
 
     &-title {
       position: absolute;
+      top: 50%;
       left: 50%;
-      bottom: 5%;
-      transform: translate(-50%, 20%) skewY(-3deg);
+      z-index: 1;
+      transform: translate(-50%, -50%);
       color: #fff;
       text-transform: uppercase;
       text-align: center;
       width: 70%;
-      font-size: 1rem;
-      line-height: 2;
-      span {
-        -webkit-box-decoration-break: clone;
-        box-decoration-break: clone;
-        padding: 1rem 1.5rem;
-        background: $gradient-transparency;
-        border-radius: 12px;
-        // opacity: 0.8;
-      }
+      font-size: 1.5rem;
+      font-family: "Staatliches", cursive;
+      letter-spacing: 1px;
+      opacity: 1;
     }
 
     &-details {
@@ -436,17 +449,22 @@ a {
       &-list {
         display: grid;
         grid-template-columns: 1fr 1fr;
+        
         .item-ingredient {
           display: flex;
-          padding: 1rem;
+          padding: 0.5rem;
           justify-content: flex-start;
           align-items: baseline;
+
           i {
             color: $primary-color;
             margin-right: 0.4rem;
           }
+
           .ingredient-count {
             margin-right: 0.3rem;
+            white-space: nowrap;
+            // min-width: 40px;
           }
         }
       }
@@ -461,7 +479,6 @@ a {
       flex-direction: column;
       justify-content: center;
       align-items: center;
-
       padding: 1rem 1rem;
 
       &-text {
@@ -488,6 +505,7 @@ a {
       color: $dark-color;
       max-height: $max-height;
       overflow: scroll;
+
       &-item {
         display: flex;
         justify-content: space-between;
@@ -503,7 +521,6 @@ a {
           margin-right: 1rem;
           border-radius: 3px;
           border: 1px $light-color solid;
-
           input {
             width: 3.5rem;
             border: none;
@@ -547,7 +564,7 @@ a {
 }
 .loader {
   margin-top: 5rem;
-
+  align-self: center;
   i {
     color: $primary-color;
     animation: spin 1.3s infinite linear;

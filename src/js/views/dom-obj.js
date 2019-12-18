@@ -9,7 +9,8 @@ export const DOM = {
   resultPanel: document.querySelector(".result-panel"),
   resultPageBtns: document.querySelector(".result-page-btns"),
   resultPageBtnsPrev: document.querySelector('.result-page-btns-prev'),
-  resultPageBtnsNext: document.querySelector('.result-page-btns-next')
+  resultPageBtnsNext: document.querySelector('.result-page-btns-next'),
+  recipePanel: document.querySelector('.recipe-panel')
 };
 
 export const renderLoader = parent => {
