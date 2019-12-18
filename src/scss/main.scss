@@ -310,19 +310,23 @@ a {
       // max-height: $max-height;
       // overflow: scroll;
       &:first-child a {
-        margin-top: 1rem;
+        // margin-top: 1rem;
       }
     }
 
     .result-page-btns {
       margin-top: auto;
-      display: flex;
-      justify-content: center;
-      .btn-prev span i {
-        margin-right: 0.3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      .btn-prev {
+        span i {
+          margin-right: 0.3rem;
+        }
       }
-      .btn-next span i {
-        margin-left: 0.3rem;
+      .btn-next {
+        span i {
+          margin-left: 0.3rem;
+        }
       }
     }
   }
@@ -543,7 +547,7 @@ a {
 }
 .loader {
   margin-top: 5rem;
-  
+
   i {
     color: $primary-color;
     animation: spin 1.3s infinite linear;

@@ -6,7 +6,10 @@ export const DOM = {
   searchForm: document.querySelector(".search"),
   searchInput: document.querySelector(".search-field"),
   searchList: document.querySelector(".result-list"),
-  resultPanel: document.querySelector(".result-panel")
+  resultPanel: document.querySelector(".result-panel"),
+  resultPageBtns: document.querySelector(".result-page-btns"),
+  resultPageBtnsPrev: document.querySelector('.result-page-btns-prev'),
+  resultPageBtnsNext: document.querySelector('.result-page-btns-next')
 };
 
 export const renderLoader = parent => {

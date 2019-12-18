@@ -17,6 +17,19 @@ DOM.searchForm.addEventListener("submit", e => {
   controlSearch();
 });
 
+// Handle pagination on button click
+DOM.resultPageBtns.addEventListener("click", e => {
+  // Targeting each btn only
+  const btn = e.target.closest(".btn-inline");
+  if (btn) {
+    const goToPage = parseInt(btn.dataset.goto);
+
+    // Render next page
+    searchView.clearPrevSearch();
+    searchView.renderResults(state.search.recipes, goToPage);
+  }
+});
+
 const controlSearch = async () => {
   // get query from view
   const query = searchView.getInput();
@@ -30,7 +43,7 @@ const controlSearch = async () => {
     searchView.clearPrevSearch();
     searchView.clearInput();
     // render loader while fetching
-    renderLoader(DOM.resultPanel);    
+    renderLoader(DOM.resultPanel);
 
     // search for recipe
     await state.search.getRes(); // Promise is returned

@@ -1,6 +1,6 @@
 import { DOM } from "./dom-obj";
 const titleLimit = 15;
-
+const searchPerPage = 10;
 const renderRecipe = recipe => {
   const markup = `
   <li>
@@ -40,19 +40,64 @@ const limitRecipeTitle = (recipeTitle, limit = titleLimit) => {
   return recipeTitle;
 };
 
-export const getInput = () => DOM.searchInput.value;
-
-export const renderResults = recipes => {
-  //   recipes.forEach(element => {
-  //     renderRecipe(element);
-  //   });
-  // Same as above
-  recipes.forEach(renderRecipe);
+const createBtn = (page, type) => {
+  let markup;
+  if (type === "prev") {
+    markup = `
+        <button class="btn btn-inline btn-prev" data-goto="${page - 1}">
+          <span><i class="fas fa-caret-left"></i>Page ${page - 1}</span>
+        </button>`;
+    DOM.resultPageBtnsPrev.insertAdjacentHTML("beforeend", markup);
+  } else if (type === "next") {
+    markup = `
+    <button class="btn btn-inline btn-next" data-goto="${page + 1}">
+    <span>Page ${page + 1}<i class="fas fa-caret-right"></i></span>
+    </button>`;
+    DOM.resultPageBtnsNext.insertAdjacentHTML("beforeend", markup);
+  } else {
+    throw new Error("Type must be either prev or next");
+  }
+//   return markup;
 };
 
+const renderBtns = (page, numEntry, resPerPage) => {
+  const pages = Math.ceil(numEntry / resPerPage);
+
+  if (page === 1 && pages > 1) {
+    // render next page btn
+    createBtn(page, "next");
+  } else if (page < pages) {
+    // render both prev, next btns
+    createBtn(page, "prev");
+    createBtn(page, "next");
+  } else if (page === pages) {
+    // render prev btn at the last page
+    createBtn(page, "prev");
+  }
+};
+
+export const getInput = () => DOM.searchInput.value;
 export const clearInput = () => {
   DOM.searchInput.value = "";
 };
 export const clearPrevSearch = () => {
   DOM.searchList.innerHTML = "";
+  DOM.resultPageBtnsPrev.innerHTML = "";
+  DOM.resultPageBtnsNext.innerHTML = "";
+};
+
+export const renderResults = (recipes, page = 1, resPerPage = searchPerPage) => {
+  // Render entries
+  const start = (page - 1) * resPerPage;
+  const end = page * resPerPage;
+
+  recipes.slice(start, end).forEach(renderRecipe);
+
+  //   recipes.forEach(element => {
+  //     renderRecipe(element);
+  //   });
+  // === recipes.forEach(renderRecipe);
+
+  // Render buttons for pagination
+    renderBtns(page, recipes.length, resPerPage);
 };
