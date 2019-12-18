@@ -84,7 +84,7 @@ const controlRecipe = async () => {
 
       // render results on UI
       clearLoader();
-    //   console.log(state.recipe); ///
+      //   console.log(state.recipe); ///
 
       recipeView.renderRecipe(state.recipe);
     } catch (e) {
@@ -100,3 +100,19 @@ const controlRecipe = async () => {
 // window.addEventListener("load", controlRecipe); // fired when page is loaded
 // Using above listeners
 ["hashchange", "load"].forEach(e => window.addEventListener(e, controlRecipe));
+
+// Handle recipe serving btns
+DOM.recipePanel.addEventListener("click", e => {
+  // * to denote anything that's child of btn
+  if (e.target.matches(".btn-minus, .btn-minus *")) {
+    // When minus btn is clicked
+    if (state.recipe.servings > 1) {
+      state.recipe.updateServings("dec");
+      recipeView.updateServingIngredients(state.recipe);
+    }
+  } else if (e.target.matches(".btn-plus, .btn-plus *")) {
+    // When plus btn is clicked
+    state.recipe.updateServings("inc");
+    recipeView.updateServingIngredients(state.recipe);
+  }
+});

@@ -59,10 +59,10 @@ export const renderRecipe = rec => {
       <span class="recipe-info-text">servings</span>
       <!-- + and - btns -->
       <div class="recipe-info-btns">
-        <button class="btn">
+        <button class="btn btn-minus">
           <i class="fas fa-minus-square fa-lg"></i>
         </button>
-        <button class="btn">
+        <button class="btn btn-plus">
           <i class="fas fa-plus-square fa-lg"></i>
         </button>
       </div>
@@ -104,4 +104,14 @@ export const renderRecipe = rec => {
 
 export const clearPrevSearch = () => {
   DOM.recipePanel.innerHTML = "";
+};
+
+export const updateServingIngredients = rec => {
+  // update count
+  document.querySelector(".recipe-info-serving").innerHTML = rec.servings;
+  // update ingredients
+  const elementCnt = Array.from(document.querySelectorAll(".ingredient-count"));
+  elementCnt.forEach((e, i) => {
+    e.innerHTML = formatCount(rec.ingredients[i].count);
+  });
 };

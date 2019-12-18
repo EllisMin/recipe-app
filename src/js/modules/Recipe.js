@@ -33,7 +33,7 @@ export default class Recipe {
   }
 
   calcServing() {
-    this.servings = 3; ///
+    this.servings = 4; ///
   }
 
   parseIngredients() {
@@ -108,5 +108,14 @@ export default class Recipe {
       return objIng;
     });
     this.ingredients = newIngred;
+  }
+
+  updateServings(type) {
+    const newServings = type === "dec" ? this.servings - 1 : this.servings + 1;
+
+    this.ingredients.forEach(e => {
+      e.count = e.count * (newServings / this.servings);
+    });
+    this.servings = newServings;
   }
 }
