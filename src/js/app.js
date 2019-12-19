@@ -39,7 +39,7 @@ DOM.resultPageBtns.addEventListener("click", e => {
 
 const controlSearch = async () => {
   // get query from view
-  const query = searchView.getInput();
+  const query = searchView.getInput().toLowerCase();
   //   console.log(query);///
 
   if (query) {
@@ -60,8 +60,8 @@ const controlSearch = async () => {
       if (!usingTablet) searchView.renderResults(state.search.results);
       else searchView.renderResultsWithoutPage(state.search.results);
     } catch (e) {
-      // alert("Something when wrong in search");
-      alert(e);
+      alert("Something when wrong in search");
+      // alert(e);
       clearLoader();
     }
   }
