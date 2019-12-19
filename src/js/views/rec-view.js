@@ -77,7 +77,7 @@ export const renderRecipe = rec => {
         ${rec.ingredients.map(e => createIngredient(e)).join("")}
     </ul>
     <!-- Add to shopping list btn -->
-    <button class="btn btn-recipe">
+    <button class="btn btn-recipe btn-cart">
       <i class="fas fa-shopping-cart fa-xs"></i>
       <span>Add to shopping list</span>
     </button>

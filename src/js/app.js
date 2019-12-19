@@ -2,9 +2,11 @@
 import "../scss/main.scss";
 import Search from "./modules/Search";
 import Recipe from "./modules/Recipe";
+import ShoppingList from "./modules/ShoppingList";
 import { DOM, renderLoader, clearLoader } from "./views/dom-obj";
 import * as searchView from "./views/search-view";
 import * as recipeView from "./views/rec-view";
+import * as listView from "./views/list-view";
 
 // Global state of app
 //  - Search object
@@ -95,6 +97,19 @@ const controlRecipe = async () => {
   }
 };
 
+/** Shopping List Controller */
+const controlList = () => {
+  // create a new list if there isn't one
+  if (!state.list) {
+    state.list = new ShoppingList();
+  }
+  // add all ingredients
+  state.recipe.ingredients.forEach(e => {
+    const item = state.list.addItem(e.count, e.unit, e.ingred);
+    listView.renderItem(item);
+  });
+};
+
 // Get ID from URL
 // window.addEventListener("hashchange", controlRecipe);
 // window.addEventListener("load", controlRecipe); // fired when page is loaded
@@ -114,5 +129,26 @@ DOM.recipePanel.addEventListener("click", e => {
     // When plus btn is clicked
     state.recipe.updateServings("inc");
     recipeView.updateServingIngredients(state.recipe);
+  } else if (e.target.matches(".btn-cart, .btn-cart *")) {
+    // Adding the ingredients to shopping cart
+    controlList();
+  }
+});
+
+// Handle delete shopping item
+DOM.shoppingList.addEventListener("click", e => {
+  const id = e.target.closest(".shopping-list-item").dataset.itemid;
+
+  // handle delete btn
+  if (e.target.matches(".btn-delete, .btn-delete *")) {
+    // remove from state
+    state.list.removeItem(id);
+    // remove from UI
+    listView.deleteItem(id);
+  }
+  // Handle count update
+  else if (e.target.matches(".shopping-list-item-count input")) {
+    const val = parseFloat(e.target.value, 10);
+    state.list.updateCnt(id, val);
   }
 });

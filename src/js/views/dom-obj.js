@@ -8,9 +8,10 @@ export const DOM = {
   searchList: document.querySelector(".result-list"),
   resultPanel: document.querySelector(".result-panel"),
   resultPageBtns: document.querySelector(".result-page-btns"),
-  resultPageBtnsPrev: document.querySelector('.result-page-btns-prev'),
-  resultPageBtnsNext: document.querySelector('.result-page-btns-next'),
-  recipePanel: document.querySelector('.recipe-panel')
+  resultPageBtnsPrev: document.querySelector(".result-page-btns-prev"),
+  resultPageBtnsNext: document.querySelector(".result-page-btns-next"),
+  recipePanel: document.querySelector(".recipe-panel"),
+  shoppingList: document.querySelector(".shopping-list")
 };
 
 export const renderLoader = parent => {

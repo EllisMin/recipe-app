@@ -449,7 +449,7 @@ a {
       &-list {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        
+
         .item-ingredient {
           display: flex;
           padding: 0.5rem;
@@ -513,6 +513,7 @@ a {
         padding: 1rem 0;
         border-bottom: 1px dashed $light-color;
         font-size: 0.7rem;
+        animation: fadeIn 1s forwards;
         &-count {
           display: flex;
           justify-content: center;
@@ -571,11 +572,27 @@ a {
   }
 }
 
+.entry-disappear {
+  transition: transform 0.5s, opacity 0.5s;
+  transform: translateX(100%);
+  opacity: 0;
+}
 @keyframes spin {
   0% {
     transform: rotate(0);
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    visibility: hidden;
+    opacity: 0;
+  }
+  to {
+    visibility: visible;
+    opacity: 1;
   }
 }
