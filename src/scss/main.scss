@@ -1,6 +1,7 @@
 // Google Font: Lato
 @import url("https://fonts.googleapis.com/css?family=Lato|Staatliches&display=swap");
 
+
 $website-width: 1280px;
 $primary-color: #ef4c4c;
 $primary-color-dark: #e72b2b;
@@ -316,13 +317,13 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
+
     .result-list {
       // Using scroll instead of pagination
       // max-height: $max-height;
       // overflow: scroll;
-      &:first-child a {
-        // margin-top: 1rem;
-      }
+      display: flex;
+      flex-direction: column;
     }
 
     .result-page-btns {
@@ -628,3 +629,5 @@ a {
     opacity: 1;
   }
 }
+
+@import 'media';

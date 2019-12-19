@@ -104,7 +104,6 @@ export default class Recipe {
           ingred // ^
         };
       }
-
       return objIng;
     });
     this.ingredients = newIngred;

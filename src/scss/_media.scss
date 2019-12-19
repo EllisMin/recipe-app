@@ -1,0 +1,19 @@
+@media (max-width: 800px) {
+  #main-section {
+    .container {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+  }
+  .result-list {
+    flex-direction: row !important;
+    overflow: scroll;
+  }
+  .result-page.btns {
+    visibility: none;
+    &-prev,
+    &-next {
+      visibility: none;
+    }
+  }
+}

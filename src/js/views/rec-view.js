@@ -16,6 +16,7 @@ const formatCount = count => {
   if (count) {
     // Ex: count = 2.5 --> 5/2 --> 2 1/2
     // Ex: count = 0.5 --> 1/2
+    // const newCnt = Math.round(count * 100)/100;
     const [int, dec] = count
       .toString()
       .split(".")

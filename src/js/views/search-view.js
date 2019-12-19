@@ -103,8 +103,6 @@ export const renderResults = (
   //   });
   // === recipes.forEach(renderRecipe);
 
-  //   console.log(recipes); ///
-
   // Render buttons for pagination
   renderBtns(page, recipes.length, resPerPage);
 };
@@ -118,3 +116,4 @@ export const highlightSelected = id => {
   // Using css selecting
   document.querySelector(`.result-link[href="#${id}"]`).classList.add("active");
 };
+

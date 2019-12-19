@@ -40,7 +40,8 @@ DOM.resultPageBtns.addEventListener("click", e => {
 
 const controlSearch = async () => {
   // get query from view
-  const query = searchView.getInput();
+    // const query = searchView.getInput();
+  const query = "pizza"; ///
   //   console.log(query);///
 
   if (query) {
@@ -64,9 +65,12 @@ const controlSearch = async () => {
     }
   }
 };
+///TESTING
+window.addEventListener("load", () => {
+  controlSearch();
+});
 
 /** Recipe Controller */
-
 const controlRecipe = async () => {
   // Get id from url
   const id = window.location.hash.replace("#", "");
@@ -212,3 +216,6 @@ DOM.shoppingList.addEventListener("click", e => {
     state.list.updateCnt(id, val);
   }
 });
+
+// Media query
+var tablet = window.matchMedia("(max-width: 700px)");
