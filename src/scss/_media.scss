@@ -38,6 +38,12 @@
       visibility: none;
     }
   }
+  // Always show serving btns
+  .recipe-info-btns{
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
 }
 // resize searchbar
 @media (max-width: 610px) {
