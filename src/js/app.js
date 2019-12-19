@@ -119,8 +119,6 @@ const controlList = () => {
     }
   });
 };
-// TESTING
-state.likes = new Likes();
 
 /** Like Controller  */
 const controlLike = () => {
@@ -155,6 +153,19 @@ const controlLike = () => {
   // Toggle heart button in navbar
   likesView.toggleLikeMenu(state.likes.getNumLikes());
 };
+
+// Restore liked recipes on page load
+window.addEventListener("load", () => {
+  state.likes = new Likes();
+  // Restore likes
+  state.likes.readStorage();
+  // Toggle like menu button
+  likesView.toggleLikeMenu(state.likes.getNumLikes());
+  // Render the existing likes
+  state.likes.likes.forEach(like => {
+    likesView.renderLike(like);
+  });
+});
 
 // Get ID from URL
 // window.addEventListener("hashchange", controlRecipe);
