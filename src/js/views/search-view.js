@@ -26,7 +26,7 @@ const renderRecipe = recipe => {
  *   acc: 15 / acc + cur.length = 18, newTitle = ['Pasta', 'with', 'tomato']
  *   acc: 18 / acc + cur.length = 24, newTitle = ['Pasta', 'with', 'tomato']
  */
-const limitRecipeTitle = (recipeTitle, limit = titleLimit) => {
+export const limitRecipeTitle = (recipeTitle, limit = titleLimit) => {
   const newTitle = [];
   if (recipeTitle.length > limit) {
     recipeTitle.split(" ").reduce((acc, cur) => {
@@ -115,7 +115,6 @@ export const highlightSelected = id => {
   arrRes.forEach(e => {
     e.classList.remove("active");
   });
-
   // Using css selecting
-  document.querySelector(`a[href="#${id}"]`).classList.add("active");
+  document.querySelector(`.result-link[href="#${id}"]`).classList.add("active");
 };

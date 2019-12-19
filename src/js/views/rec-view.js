@@ -35,7 +35,7 @@ const formatCount = count => {
   return "?";
 };
 
-export const renderRecipe = rec => {
+export const renderRecipe = (rec, isLiked) => {
   const markup = `
   <!-- Figure -->
   <div class="recipe-fig">
@@ -68,8 +68,8 @@ export const renderRecipe = rec => {
       </div>
     </div>
     <!-- heart btn -->
-    <button class="btn btn-heart fa-lg">
-      <i class="fas fa-heart"></i>
+    <button class="btn btn-heart">
+      <i class="fas fa-heart fa-lg ${isLiked ? "primary-color-dark" : ""}"></i>
     </button>
   </div>
   <div class="recipe-ingredients">

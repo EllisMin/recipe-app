@@ -11,7 +11,12 @@ export const DOM = {
   resultPageBtnsPrev: document.querySelector(".result-page-btns-prev"),
   resultPageBtnsNext: document.querySelector(".result-page-btns-next"),
   recipePanel: document.querySelector(".recipe-panel"),
-  shoppingList: document.querySelector(".shopping-list")
+  shoppingList: document.querySelector(".shopping-list"),
+  likeList: document.querySelector('.likes-list')
+  // Doesn't get loaded right away
+  // heartIconNav: document.querySelector('#main-nav .fa-heart'),
+  // heartIconRec: document.querySelector('.recipe-details .fa-heart'),
+  // likeBtnNav: document.querySelectorAll('.likes-field i')
 };
 
 export const renderLoader = parent => {

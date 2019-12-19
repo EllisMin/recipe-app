@@ -3,10 +3,12 @@ import "../scss/main.scss";
 import Search from "./modules/Search";
 import Recipe from "./modules/Recipe";
 import ShoppingList from "./modules/ShoppingList";
+import Likes from "./modules/Likes";
 import { DOM, renderLoader, clearLoader } from "./views/dom-obj";
 import * as searchView from "./views/search-view";
 import * as recipeView from "./views/rec-view";
 import * as listView from "./views/list-view";
+import * as likesView from "./views/likes-view";
 
 // Global state of app
 //  - Search object
@@ -86,9 +88,9 @@ const controlRecipe = async () => {
 
       // render results on UI
       clearLoader();
-      //   console.log(state.recipe); ///
+      // console.log(state.recipe); ///
 
-      recipeView.renderRecipe(state.recipe);
+      recipeView.renderRecipe(state.recipe, state.likes.isLiked(id));
     } catch (e) {
       console.log(e);
       alert("Error processing recipe");
@@ -117,6 +119,42 @@ const controlList = () => {
     }
   });
 };
+// TESTING
+state.likes = new Likes();
+
+/** Like Controller  */
+const controlLike = () => {
+  if (!state.likes) {
+    state.likes = new Likes();
+  }
+  const curId = state.recipe.id;
+
+  // User hasn't like the current recipe yet
+  if (!state.likes.isLiked(curId)) {
+    // add like to state
+    const newLike = state.likes.addLike(
+      curId,
+      state.recipe.title,
+      state.recipe.author,
+      state.recipe.imgUrl
+    );
+    // toggle the like btn
+    likesView.toggleLikeBtn(true);
+
+    // add like to UI list
+    likesView.renderLike(newLike);
+  } else {
+    // remove like to state
+    state.likes.removeLike(curId);
+    // toggle the like btn
+    likesView.toggleLikeBtn(false);
+
+    // remove like to UI list
+    likesView.deleteLike(curId);
+  }
+  // Toggle heart button in navbar
+  likesView.toggleLikeMenu(state.likes.getNumLikes());
+};
 
 // Get ID from URL
 // window.addEventListener("hashchange", controlRecipe);
@@ -140,6 +178,9 @@ DOM.recipePanel.addEventListener("click", e => {
   } else if (e.target.matches(".btn-cart, .btn-cart *")) {
     // Adding the ingredients to shopping cart
     controlList();
+  } else if (e.target.matches(".btn-heart, .btn-heart *")) {
+    // Like controller
+    controlLike();
   }
 });
 
