@@ -1,11 +1,10 @@
 @media (max-width: 800px) {
   #main-section {
+    // stack main section
     .container {
       grid-template-columns: 1fr;
       min-height: auto;
     }
-  }
-  .result-panel {
   }
   .result-list {
     flex-direction: row !important;
@@ -19,7 +18,7 @@
         flex-direction: column;
         // white-space: nowrap;
         .result-fig {
-          width: 66px;
+          width: 64px;
           align-self: center;
           margin-right: 0;
           margin-bottom: 0.5rem;
@@ -28,9 +27,6 @@
           display: flex;
           flex-direction: column;
           white-space: nowrap;
-          .result-name,
-          .result-author {
-          }
         }
       }
     }
@@ -40,6 +36,54 @@
     &-prev,
     &-next {
       visibility: none;
+    }
+  }
+}
+// resize searchbar
+@media (max-width: 610px) {
+  #main-nav {
+    .search {
+      &-field {
+        min-width: 0px;
+      }
+    }
+    .btn-search {
+      span {
+        display: none;
+      }
+    }
+  }
+}
+@media (max-width: 500px) {
+  .container {
+    padding: 0;
+  }
+  #main-nav {
+    .container {
+      grid-template-areas:
+        "logo nothing nothing"
+        "search search likes";
+    }
+    .logo {
+      grid-area: logo;
+    }
+    .search {
+      grid-area: search;
+    }
+    .likes {
+      grid-area: likes;
+    }
+  }
+  .recipe {
+    // reduce image size
+    &-img {
+      height: 250px !important;
+    }
+    // stack ingredients
+    &-ingredients {
+      &-list {
+        grid-template-columns: 1fr !important;
+      }
     }
   }
 }

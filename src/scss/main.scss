@@ -317,6 +317,7 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow: hidden;
 
     .result-list {
       // Using scroll instead of pagination
@@ -349,7 +350,7 @@ a {
       background: $light-color;
       display: flex;
       flex-direction: column;
-
+      overflow: hidden;
       &:hover {
         .recipe-info-servings .recipe-info-btns {
           visibility: visible;
