@@ -39,8 +39,7 @@ DOM.resultPageBtns.addEventListener("click", e => {
 
 const controlSearch = async () => {
   // get query from view
-  // const query = searchView.getInput();
-  const query = "pizza"; ///
+  const query = searchView.getInput();
   //   console.log(query);///
 
   if (query) {
@@ -66,10 +65,6 @@ const controlSearch = async () => {
     }
   }
 };
-///TESTING
-window.addEventListener("load", () => {
-  controlSearch();
-});
 
 /** Recipe Controller */
 const controlRecipe = async () => {
@@ -225,7 +220,7 @@ tablet.addListener(usingTabletFcn); // Attach listener function on state change
 let usingTablet = tablet.matches;
 
 function usingTabletFcn() {
-  console.log(usingTablet);
+//   console.log(usingTablet);
   if (tablet.matches) {
     // handle search results; when using tablet, it removes pagination
     if (state.search) controlSearch();

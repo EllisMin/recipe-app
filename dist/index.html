@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Recipe App | Search over 1,000,000 Recipes!</title>
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,700"
+      rel="stylesheet"
+    />
+    <!-- Local CSS -->
+    <!-- <link rel="stylesheet" href="./main.css" /> -->
+    <!-- Font awesome -->
+    <script
+      src="https://kit.fontawesome.com/939d583296.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./img/favicon.ico" />
+  <link href="main.css" rel="stylesheet"></head>
+
+  <body>
+    <nav id="main-nav">
+      <div class="container">
+        <a href="./index.html">
+          <div class="logo">
+            <img src="./img/icon.png" alt="logoimg" />
+            <div class="logo-text">
+              <span class="primary-color">Re</span>cipes
+            </div>
+          </div>
+        </a>
+
+        <form class="search">
+          <input
+            type="text"
+            class="search-field"
+            placeholder="Search over 1,000,000 recipes!"
+          />
+          <button class="btn btn-search">
+            <i class="fas fa-search fa-xs"></i>
+            <span>Search</span>
+          </button>
+        </form>
+
+        <div class="likes">
+          <div class="likes-field">
+            <i class="fas fa-heart fa-lg"></i>
+          </div>
+          <div class="likes-panel">
+            <ul class="likes-list">
+              <li class="no-item">
+                <div class="likes-data">
+                  <h4 class="no-item-title">There's no liked item ( ᵒ̴̶̷̥́ _ᵒ̴̶̷̣̥̀ )</h4>
+                </div>
+              </li>
+              <!-- <li>
+                <a href="#23456" class="likes-link">
+                  <div class="likes-fig">
+                    <img src="./img/test-1.jpg" alt="test-1" />
+                  </div>
+                  <div class="likes-data">
+                    <h4 class="likes-name">Pasta with Tomato ...</h4>
+                    <p class="likes-author">The Pioneer Woman</p>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#23456" class="likes-link">
+                  <div class="likes-fig">
+                    <img src="./img/test-1.jpg" alt="test-1" />
+                  </div>
+                  <div class="likes-data">
+                    <h4 class="likes-name">Pasta with Tomato ...</h4>
+                    <p class="likes-author">The Pioneer Woman</p>
+                  </div>
+                </a>
+              </li> -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div id="main-section">
+      <div class="container">
+        <div class="result-panel">
+          <!-- <div class="loader">
+            <i class="fas fa-spinner fa-2x"></i>
+          </div> -->
+          <ul class="result-list">
+            <!-- <li>
+              <a href="#23456" class="result-link active">
+                <div class="result-fig">
+                  <img src="./img/test-1.jpg" alt="test" />
+                </div>
+                <div class="result-data">
+                  <h4 class="result-name">Pasta with Tomato ...</h4>
+                  <p class="result-author">The Pioneer Woman</p>
+                </div>
+              </a>
+            </li>
+
+            <li>
+              <a href="#76767" class="result-link">
+                <div class="result-fig">
+                  <img src="./img/test-2.jpg" alt="test" />
+                </div>
+                <div class="result-data">
+                  <h4 class="result-name">Pasta Salad with ...</h4>
+                  <p class="result-author">Spicy Man</p>
+                </div>
+              </a>
+            </li>
+
+            <li>
+              <a href="#76767" class="result-link">
+                <div class="result-fig">
+                  <img src="./img/test-3.jpg" alt="test" />
+                </div>
+                <div class="result-data">
+                  <h4 class="result-name">Pasta Salad with ...</h4>
+                  <p class="result-author">Spicy Man</p>
+                </div>
+              </a>
+            </li>
+
+            <li>
+              <a href="#76767" class="result-link">
+                <div class="result-fig">
+                  <img src="./img/test-4.jpg" alt="test" />
+                </div>
+                <div class="result-data">
+                  <h4 class="result-name">Pasta Salad with ...</h4>
+                  <p class="result-author">Spicy Man</p>
+                </div>
+              </a>
+            </li>
+
+            <li>
+              <a href="#76767" class="result-link">
+                <div class="result-fig">
+                  <img src="./img/test-5.jpg" alt="test" />
+                </div>
+                <div class="result-data">
+                  <h4 class="result-name">Pasta Salad with ...</h4>
+                  <p class="result-author">Spicy Man</p>
+                </div>
+              </a>
+            </li>
+
+            <li>
+              <a href="#76767" class="result-link">
+                <div class="result-fig">
+                  <img src="./img/test-6.jpg" alt="test" />
+                </div>
+                <div class="result-data">
+                  <h4 class="result-name">Pasta Salad with ...</h4>
+                  <p class="result-author">Spicy Man</p>
+                </div>
+              </a>
+            </li>
+
+            <li>
+              <a href="#76767" class="result-link">
+                <div class="result-fig">
+                  <img src="./img/test-7.jpg" alt="test" />
+                </div>
+                <div class="result-data">
+                  <h4 class="result-name">Pasta Salad with ...</h4>
+                  <p class="result-author">Spicy Man</p>
+                </div>
+              </a>
+            </li> -->
+          </ul>
+
+          <div class="result-page-btns">
+            <div class="result-page-btns-prev">
+              <!-- <button class="btn btn-inline btn-prev">
+                <span><i class="fas fa-caret-left"></i>Page 1</span>
+              </button> -->
+            </div>
+            <div class="result-page-btns-next">
+              <!-- <button class="btn btn-inline btn-next">
+                <span>Page 3<i class="fas fa-caret-right"></i></span>
+              </button> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="recipe-panel">
+          <!-- <div class="loader">
+            <i class="fas fa-spinner fa-2x"></i>
+          </div> -->
+          <!-- <div class="recipe-fig"">
+            <div class="recipe-img" style="background: url('./img/test-8.jpg');"></div>
+            
+            <h1 class="recipe-title">
+              <span>Pasta with tomato cream sauce</span>
+            </h1>
+          </div>
+
+          <div class="recipe-details"> -->
+          <!-- Minutes -->
+          <!-- <div class="recipe-info">
+              <i class="fas fa-hourglass-end"></i>
+              <span class="recipe-info-minutes">45</span>
+              <span class="recipe-info-text">minutes</span>
+            </div> -->
+          <!-- Servings -->
+          <!-- <div class="recipe-info-servings">
+              <i class="fas fa-male"></i>
+              <span class="recipe-info-serving">3</span>
+              <span class="recipe-info-text">servings</span> -->
+          <!-- + and - btns -->
+          <!-- <div class="recipe-info-btns">
+                <button class="btn">
+                  <i class="fas fa-minus-square fa-lg"></i>
+                </button>
+                <button class="btn">
+                  <i class="fas fa-plus-square fa-lg"></i>
+                </button>
+              </div>
+            </div> -->
+
+          <!-- heart btn -->
+          <!-- <button class="btn btn-heart">
+              <i class="fas fa-heart"></i>
+            </button>
+          </div>
+
+          <div class="recipe-ingredients">
+            <ul class="recipe-ingredients-list">
+              <li class="item-ingredient">
+                <i class="far fa-check-circle"></i>
+                <div class="ingredient-count">1/2</div>
+                <div class="ingredient-which">
+                  <span class="ingredient-unit">cup</span>
+                  ricotta cheese
+                </div>
+              </li>
+
+              <li class="item-ingredient">
+                <i class="far fa-check-circle"></i>
+                <div class="ingredient-count">1</div>
+                <div class="ingredient-which">
+                  <span class="ingredient-unit">can</span>
+                  tomatoes, whole or crushed
+                </div>
+              </li>
+
+              <li class="item-ingredient">
+                <i class="far fa-check-circle"></i>
+                <div class="ingredient-count">1000</div>
+                <div class="ingredient-which">
+                  <span class="ingredient-unit">g</span>
+                  pasta
+                </div>
+              </li>
+
+              <li class="item-ingredient">
+                <i class="far fa-check-circle"></i>
+                <div class="ingredient-count">1000</div>
+                <div class="ingredient-which">
+                  <span class="ingredient-unit">g</span>
+                  pasta
+                </div>
+              </li>
+            </ul> -->
+          <!-- Add to shopping list btn -->
+          <!-- <button class="btn btn-recipe">
+              <i class="fas fa-shopping-cart fa-xs"></i>
+              <span>Add to shopping list</span>
+            </button>
+          </div>
+
+          <div class="recipe-directions">
+            <h2 class="title-2">How to cook it</h2>
+            <p class="recipe-directions-text">
+              This recipe was carefully designed and tested by
+              <span class="recipe-by">The Pioneer Woman</span>. Please check out
+              more detailed directions at their website.
+            </p>
+            <a
+              href=""
+              class="btn btn-recipe"
+              href="http://thepioneerwoman.com/cooking/pasta-with-tomato-cream-sauce/"
+              target="_blank"
+            >
+              <span>Directions</span>
+              <i class="fas fa-caret-right"></i>
+            </a>
+          </div> -->
+        </div>
+        <div class="shopping-panel">
+          <h2 class="title-2">my shopping list</h2>
+
+          <ul class="shopping-list">
+            <!-- <li class="shopping-list-item">
+              <div class="shopping-list-item-count">
+                <input type="number" value="500" step="100" />
+                <p class="shopping-list-item-unit">g</p>
+              </div>
+              <p class="shopping-list-item-des">Pasta</p>
+              <button class="btn btn-delete">
+                <i class="fas fa-minus-circle"></i>
+              </button>
+            </li>
+
+            <li class="shopping-list-item">
+              <div class="shopping-list-item-count">
+                <input type="number" value="0.5" step="0.1" />
+                <p class="shopping-list-item-unit">cup</p>
+              </div>
+              <p class="shopping-list-item-des">Ricotta cheese</p>
+              <button class="btn btn-delete">
+                <i class="fas fa-minus-circle"></i>
+              </button>
+            </li>
+
+            <li class="shopping-list-item">
+              <div class="shopping-list-item-count">
+                <input type="number" value="3.5" step="0.1" />
+                <p class="shopping-list-item-unit">tbsp</p>
+              </div>
+              <p class="shopping-list-item-des">Almond slices</p>
+              <button class="btn btn-delete">
+                <i class="fas fa-minus-circle"></i>
+              </button>
+            </li> -->
+          </ul>
+
+          <div class="copyright">
+            <p>Copyright &copy; 2019. All Rights Reserved</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <script src="./js/bundle.js"></script> -->
+  <script type="text/javascript" src="js/bundle.js"></script></body>
+</html>
