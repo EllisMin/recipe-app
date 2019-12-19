@@ -60,7 +60,8 @@ const controlSearch = async () => {
       if (!usingTablet) searchView.renderResults(state.search.results);
       else searchView.renderResultsWithoutPage(state.search.results);
     } catch (e) {
-      alert("Something when wrong in search");
+      // alert("Something when wrong in search");
+      alert(e);
       clearLoader();
     }
   }
