@@ -106,7 +106,7 @@ export const renderResults = (
   renderBtns(page, recipes.length, resPerPage);
 };
 
-export const renderResultsWithoutPage = (recipes) => {
+export const renderResultsWithoutPage = recipes => {
   recipes.forEach(renderRecipe);
 };
 
@@ -117,5 +117,6 @@ export const highlightSelected = id => {
     e.classList.remove("active");
   });
   // Using css selecting
-  document.querySelector(`.result-link[href="#${id}"]`).classList.add("active");
+  const toBeHighlighted = document.querySelector(`.result-link[href="#${id}"]`);
+  if (toBeHighlighted) toBeHighlighted.classList.add("active");
 };
