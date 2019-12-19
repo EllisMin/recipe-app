@@ -30,4 +30,17 @@ export default class ShoppingList {
     // find() returns the element itself
     this.items.find(e => e.id === id).count = newCnt;
   }
+
+  dupCheckUpdate(rec) {
+    let retObj;
+    this.items.forEach(e => {
+      if (e.ingredient === rec.ingred) {
+        this.updateCnt(e.id, e.count + rec.count);
+        retObj = e;
+        return;
+      }
+    });
+    if (retObj) return retObj;
+    else return -1;
+  }
 }

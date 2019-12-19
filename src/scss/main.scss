@@ -18,7 +18,7 @@ $gradient: linear-gradient(
   $primary-color
 );
 $gradient-transparency: linear-gradient(to right bottom, #f3c1c1cb, #ef4c4ccb);
-$max-height: 50rem;
+$max-height: 60rem;
 
 * {
   margin: 0;
@@ -496,6 +496,8 @@ a {
       display: flex;
       flex-direction: column;
       padding: 1rem 1rem;
+      // border: 1px dotted $med-color;
+      // border-left: none;
     }
 
     &-list {

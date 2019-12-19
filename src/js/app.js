@@ -104,9 +104,17 @@ const controlList = () => {
     state.list = new ShoppingList();
   }
   // add all ingredients
-  state.recipe.ingredients.forEach(e => {
-    const item = state.list.addItem(e.count, e.unit, e.ingred);
-    listView.renderItem(item);
+  state.recipe.ingredients.forEach(rec => {
+    // When the same ingredient already exists in the list
+    const dupEntry = state.list.dupCheckUpdate(rec);
+    // When duplicate exists
+    if (dupEntry !== -1) {
+      // Update count of existing UI
+      listView.updateEntry(dupEntry);
+    } else {
+      const item = state.list.addItem(rec.count, rec.unit, rec.ingred);
+      listView.renderItem(item);
+    }
   });
 };
 

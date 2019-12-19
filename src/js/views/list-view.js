@@ -17,7 +17,7 @@ export const renderItem = item => {
 };
 
 export const deleteItem = id => {
-  const item = document.querySelector(`[data-itemid="${id}"]`);
+  const item = document.querySelector(`li[data-itemid="${id}"]`);
 
   if (item) {
     // Fade out animation
@@ -28,3 +28,10 @@ export const deleteItem = id => {
   }
 };
 
+// Update the entry when trying to add duplicate ingredient to the list
+export const updateEntry = existingEntry => {
+  const item = document.querySelector(
+    `li[data-itemid="${existingEntry.id}"] > div > input`
+  );
+  item.value = existingEntry.count;
+};
