@@ -18,7 +18,6 @@ import * as likesView from "./views/likes-view";
 const state = {};
 
 /** Search Controller */
-
 // Search form
 DOM.searchForm.addEventListener("submit", e => {
   e.preventDefault(); // Prevent reloading page on click
@@ -40,7 +39,7 @@ DOM.resultPageBtns.addEventListener("click", e => {
 
 const controlSearch = async () => {
   // get query from view
-    // const query = searchView.getInput();
+  // const query = searchView.getInput();
   const query = "pizza"; ///
   //   console.log(query);///
 
@@ -58,7 +57,9 @@ const controlSearch = async () => {
 
       // Render results on UI
       clearLoader();
-      searchView.renderResults(state.search.results);
+      // Render with pagination on desktop
+      if (!usingTablet) searchView.renderResults(state.search.results);
+      else searchView.renderResultsWithoutPage(state.search.results);
     } catch (e) {
       alert("Something when wrong in search");
       clearLoader();
@@ -218,4 +219,19 @@ DOM.shoppingList.addEventListener("click", e => {
 });
 
 // Media query
-var tablet = window.matchMedia("(max-width: 700px)");
+let tablet = window.matchMedia("(max-width: 800px)");
+usingTabletFcn(); // Call listener function at run time
+tablet.addListener(usingTabletFcn); // Attach listener function on state change
+let usingTablet = tablet.matches;
+
+function usingTabletFcn() {
+  console.log(usingTablet);
+  if (tablet.matches) {
+    // handle search results; when using tablet, it removes pagination
+    if (state.search) controlSearch();
+    usingTablet = true;
+  } else {
+    if (state.search) controlSearch();
+    usingTablet = false;
+  }
+}

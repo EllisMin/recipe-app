@@ -97,7 +97,6 @@ export const renderResults = (
   const end = page * resPerPage;
 
   recipes.slice(start, end).forEach(renderRecipe);
-
   //   recipes.forEach(element => {
   //     renderRecipe(element);
   //   });
@@ -105,6 +104,10 @@ export const renderResults = (
 
   // Render buttons for pagination
   renderBtns(page, recipes.length, resPerPage);
+};
+
+export const renderResultsWithoutPage = (recipes) => {
+  recipes.forEach(renderRecipe);
 };
 
 export const highlightSelected = id => {
@@ -116,4 +119,3 @@ export const highlightSelected = id => {
   // Using css selecting
   document.querySelector(`.result-link[href="#${id}"]`).classList.add("active");
 };
-

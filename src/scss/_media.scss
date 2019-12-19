@@ -5,9 +5,35 @@
       min-height: auto;
     }
   }
+  .result-panel {
+  }
   .result-list {
     flex-direction: row !important;
+    max-width: 100vw;
+    justify-content: flex-start;
     overflow: scroll;
+    padding: 0.7rem 0;
+    li {
+      a {
+        display: flex;
+        flex-direction: column;
+        // white-space: nowrap;
+        .result-fig {
+          width: 66px;
+          align-self: center;
+          margin-right: 0;
+          margin-bottom: 0.5rem;
+        }
+        .result-data {
+          display: flex;
+          flex-direction: column;
+          white-space: nowrap;
+          .result-name,
+          .result-author {
+          }
+        }
+      }
+    }
   }
   .result-page.btns {
     visibility: none;
